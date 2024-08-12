@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Foo(DA)rder</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Raleway:400,700');
+
+body {
+  background-image: url('../images/img1.avif');
+  height: 600px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: Raleway, sans-serif;
+  color: #666;
+}
+
+.login {
+  margin: 20px auto;
+  padding: 40px 50px;
+  max-width: 100%;
+  border-radius: 5px;
+  background: #fff;
+  box-shadow: 1px 1px 1px #666;
+  margin-top: 50px;
+}
+
+.login input, .login select {
+  width: 100%;
+  display: block;
+  box-sizing: border-box;
+  margin: 10px 0;
+  padding: 14px 12px;
+  font-size: 16px;
+  border-radius: 2px;
+  font-family: Raleway, sans-serif;
+}
+
+.login input[type=text],
+.login input[type=password] {
+  border: 1px solid #c0c0c0;
+  transition: .2s;
+}
+
+.login input[type=text]:hover,
+.login select:hover {
+  border-color: #F44336;
+  outline: none;
+  transition: all .2s ease-in-out;
+}
+
+.login input[type=button] {
+  border: none;
+  background: #EF5350;
+  color: white;
+  font-weight: bold;
+  transition: 0.2s;
+  margin: 20px 0px;
+}
+
+.login input[type=button]:hover {
+  background: #F44336;
+}
+
+.login select {
+  border: 1px solid #c0c0c0;
+  background-color: #fff;
+  color: #666;
+}
+
+.login select:focus {
+  border-color: #EF5350;
+  outline: none;
+}
+
+.login h2 {
+  margin: 20px 0 0;
+  color: #EF5350;
+  font-size: 28px;
+}
+
+.links {
+  display: table;
+  width: 100%;
+  box-sizing: border-box;
+  border-top: 1px solid #c0c0c0;
+  margin-bottom: 10px;
+}
+
+.links a {
+  display: table-cell;
+  padding-top: 10px;
+}
+
+.links a:first-child {
+  text-align: left;
+}
+
+.links a:last-child {
+  text-align: right;
+}
+
+.login h2,
+.login p
+ .login a  {
+  text-align: center;
+}
+
+.login a {
+  text-decoration: none;
+  font-size: .8em;
+}
+
+.login a:visited {
+  color: inherit;
+}
+
+.login a:hover {
+  text-decoration: underline;
+}
+
+
+@media(max-width: 584px){
+    .login{
+        max-width: 100%;
+    }
+   
+}
+
+@media(max-width: 459px){
+  .login{
+    flex-direction: column;
+  }
+}
+
+
+    </style>
+</head>
+<body>
+    <header>
+
+        <a href="#" class="logo">Foo(DA)rder</a>
+
+        <div class="hamburger">
+            <i class="fas fa-bars"></i>
+        </div>
+
+        <nav>
+            <a href="index.html" class="active">Home</a>
+            <a href="register.html">Register</a>
+            <a href="foodorder.html">Order Your Food</a>
+            <a href="">Contact</a>
+        </nav>
+
+    </header>
+
+
+        
+
+        <form class="login">
+            <h2>Welcome, User! Order your food Now!...</h2>
+            <input type="text" placeholder="username" id="username">
+            <select id="your_order">
+                <option value="Food_Name">Biriyani</option>
+                <option value="Dhosa">Dhosa</option>
+                <option value="Idly">Idly</option>
+                <option value="Pizza">Pizza</option>
+                <option value="Veg-biriyani">Veg-biriyani</option>
+                <option value="Sandwich">Sandwich</option>
+                <option value="Burger">Burger</option>
+            </select>
+            <select id="your_location">
+                <option value="Location">Chennai</option>
+                <option value="Tiruvallur">Tiruvallur</option>
+                <option value="Kanchipuram">Kanchipuram</option>
+                <option value="Coimbatore">Coimbatore</option>
+                <option value="Salem">Salem</option>
+                <option value="Erode">Erode</option>
+            </select>
+            <input type="number" placeholder="Quantity" id="quantity" />
+            <input type="button" value="Order Now" onclick="order_now()" />
+            <div class="links">
+              <a href="#" id="output"></a>
+             
+            </div>
+            
+          </form>
+
+          <script>
+
+document.addEventListener('DOMContentLoaded', () => {
+    const hamburger = document.querySelector('.hamburger');
+    const nav = document.querySelector('nav');
+
+    hamburger.addEventListener('click', () => {
+        nav.classList.toggle('active');
+    });
+
+    function register(){
+        document.getElementById('demo').innerHTML="Register Successfully";
+    }
+})
+           
+
+    function order_now(){
+        console.log(" order receieved");
+        
+        var your_order=document.getElementById('your_order').value;
+        console.log(your_order);
+        
+        var quantity=document.getElementById('quantity').value;
+        console.log(quantity); 
+
+        var one_biriyani=100;
+        var one_dhosa=30;
+        var one_idly=10;
+
+        if (your_order=="biriyani"){
+            var total=parseInt(one_biriyani)*parseInt(quantity);
+            if (total>=1000){
+                offer_total=total-200
+                document.getElementById('output').innerHTML='your offer total bill is '+offer_total;
+            }
+            else{
+                document.getElementById('output').innerHTML='your total bill is '+total;
+            }
+           
+
+        }
+        else if (your_order=="dhosa"){
+            var total=parseInt(one_dhosa)*parseInt(quantity);
+            if (total>=1000){
+                offer_total=total-200
+                document.getElementById('output').innerHTML='your offer total bill is '+offer_total;
+            }
+            else{
+                document.getElementById('output').innerHTML='your total bill is '+total;
+            }
+
+
+        }
+        else if (your_order=="idly"){
+            var total=parseInt(one_idly)*parseInt(quantity);
+            if (total>=1000){
+                offer_total=total-200
+                document.getElementById('output').innerHTML='your offer total bill is '+offer_total;
+            }
+            else{
+                document.getElementById('output').innerHTML='your total bill is '+total;
+            }
+
+
+        }
+        else{
+            document.getElementById('output').innerHTML='Thanks For Your Order!';
+
+            
+        }
+
+    }
+
+          </script>
+
+
+        
+        
+
+       
+    
+    
+          
+
+
+
+    
+</body>
+</html>
